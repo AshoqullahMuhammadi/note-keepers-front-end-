@@ -32,6 +32,8 @@ const viewNoteContainerTitle = document.querySelector('.view-note-container h2')
 const viewNoteContainerDescription = document.querySelector('.view-note-container p');
 // calling some function
 // functions 
+// overlay 
+
 const closeAddTodoForm = function () {
     addTodoForm.classList.add('hide');
     overlay.classList.add('hide');
@@ -321,6 +323,14 @@ addTodo.addEventListener('click', function () {
     closeAddTodoForm();
 });
 
+
+overlay.addEventListener('click', function() {
+	closeAddTodoForm();
+	closeUpdateForm();
+	closeViewContainer();
+	confirmationDialog.classList.add('hide');
+        overlay.classList.add('hide');
+});
 
 
 

@@ -218,7 +218,7 @@ textarea:focus {
 }
 
 .delete-confirmation-dialog {
-  width: 400px;
+  width: 300px;
   height: 180px;
   background-color: #fff;
   border-radius: 10px;
@@ -276,8 +276,8 @@ textarea:focus {
 }
 
 .view-note-container {
-  width: 500px;
-  height: 300px;
+  width: 300px;
+  height: 200px;
   position: absolute;
   background-color: #fff;
   top: 50%;
