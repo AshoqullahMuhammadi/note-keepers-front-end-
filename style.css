@@ -9,43 +9,45 @@ body {
   flex-direction: column;
   position: relative;
   height: 100vh;
+  overflow: hidden;
 }
 
 .app-bar {
   width: 100vw;
   height: 10vh;
   position: fixed;
-  background-color: #00664b;
+  background-color: #ff3c36;
   color: #fff;
   font-family: sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 700;
-  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.1);
 }
 .show-todo-container {
   padding: 20px;
   margin: 20px;
-  background-color: #00664b;
+
+  background-color: #fff;
   border-radius: 10px;
   font-family: sans-serif;
   margin-bottom: 5px;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.3);
 }
 
-h2 {
+.show-todo-container h2 {
   font-weight: 600;
   font-size: 20px;
   margin-bottom: 10px;
-  color: #fff;
+  color: #ff3c36;
 }
 
 .show-todo-container p {
   font-weight: 500;
   font-size: 16px;
   margin-bottom: 10px;
-  color: #fff;
+  color: #000;
 }
 
 .buttons-container {
@@ -54,10 +56,10 @@ h2 {
   justify-content: space-between;
 }
 .btn {
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   cursor: pointer;
-  filter: brightness(50);
+  filter: brightness(-20);
 }
 
 .btn:active {
@@ -70,7 +72,7 @@ h2 {
   right: 20px;
   height: 50px;
   width: 50px;
-  background-color: #00664b;
+  background-color: #ff3c36;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -87,46 +89,54 @@ h2 {
   filter: brightness(40);
 }
 
-.add-todo-form {
+.add-todo-form,
+.update-todo-form {
   position: absolute;
   width: 300px;
-  height: 70%;
+  height: 500;
   top: 50%;
   left: 50%;
   transform: translateY(-50%) translateX(-50%);
   background-color: #fff;
   border-radius: 10px;
-  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1), -1px -1px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.1), -1px -1px 10px rgba(0, 0, 0, 0.1);
   font-family: sans-serif;
   padding: 25px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: 10;
 }
 
-.add-todo-form h2 {
+.add-todo-form h2,
+.update-todo-form h2 {
   text-transform: uppercase;
   text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1),
     -1px -1px 10px rgba(0, 0, 0, 0.1);
 }
 
 .add-todo-form input,
+textarea,
+.update-todo-form input,
 textarea {
   width: 100%;
   margin: 10px 0px;
   padding: 15px;
   border-radius: 10px;
-  border: 1px solid #00664b;
+  border: 1px solid #ff3c36;
   resize: none;
 }
 
 .add-todo-form input:focus,
+textarea:focus,
+.update-todo-form input:focus,
 textarea:focus {
-  outline: 1px solid #00664b;
+  outline: 1px solid #ff3c36;
 }
 
-.add-todo-form-button {
-  background-color: #00664b;
+.add-todo-form-button,
+.update-todo-form-button {
+  background-color: #ff3c36;
   width: 100%;
   padding: 10px 15px;
   border-radius: 10px;
@@ -134,15 +144,19 @@ textarea:focus {
   display: flex;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.1);
 }
-.add-todo-form-button:hover {
-  background-color: #007254;
+.add-todo-form-button:hover,
+.update-todo-form-button:hover {
+  background-color: #bd1a1a;
 }
-.add-todo-form-button:active {
+.add-todo-form-button:active,
+.update-todo-form-button:active {
   transform: scale(0.99);
 }
-.add-todo-close-button {
+.add-todo-close-button,
+.update-note-close-button,
+.view-note-close-button {
   width: 20px;
   height: 20px;
   position: absolute;
@@ -152,11 +166,9 @@ textarea:focus {
   cursor: pointer;
 }
 
-.add-todo-close-button img {
-  width: 20px;
-  height: 20px;
-}
-.add-todo-close-button:hover {
+.add-todo-close-button:hover,
+.update-note-close-button:hover,
+.view-note-close-button:hover {
   animation: add-todo-close-button-rotate 0.5s ease-in-out;
 }
 
@@ -171,10 +183,10 @@ textarea:focus {
 }
 
 .custom-toast {
-  width: 600px;
-  height: 100px;
+  width: 350px;
+  height: 75px;
   position: absolute;
-  background-color: #71ff7d;
+  background-color: #51fc5f;
   border-radius: 10px;
   margin: 20px;
   padding: 20px;
@@ -191,8 +203,8 @@ textarea:focus {
   color: #fff;
 }
 .custom-toast img {
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
   margin-right: 20px;
   filter: brightness(20);
 }
@@ -204,6 +216,90 @@ textarea:focus {
   z-index: 1;
   overflow: hidden;
 }
+
+.delete-confirmation-dialog {
+  width: 400px;
+  height: 180px;
+  background-color: #fff;
+  border-radius: 10px;
+  font-family: sans-serif;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.3);
+  align-items: center;
+  justify-content: center;
+  transform: all 0.2s linear;
+  z-index: 10;
+}
+
+.delete-confirmation-dialog h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.delete-confirmation-dialog p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+.confirmation-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.conform-button {
+  display: block;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+  margin: 10px;
+  padding: 5px 30px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #fff;
+  font-weight: bold;
+}
+
+.conform-button:active {
+  transform: scale(0.9);
+}
+.yes {
+  background-color: #ff3c36;
+}
+.no {
+  background-color: #36ff51;
+  color: #000;
+}
 .hide {
   display: none;
+}
+
+.view-note-container {
+  width: 500px;
+  height: 300px;
+  position: absolute;
+  background-color: #fff;
+  top: 50%;
+  left: 50%;
+  padding: 20px;
+  border-radius: 10px;
+  font-family: sans-serif;
+  transform: translateX(-50%) translateY(-50%);
+  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+.view-note-container h2 {
+  font-weight: 600;
+  font-size: 20px;
+  margin-bottom: 5px;
+  color: #ff3c36;
+}
+
+.view-note-container p {
+  font-weight: 500;
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #000;
 }

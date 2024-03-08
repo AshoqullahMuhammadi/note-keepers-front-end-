@@ -3,24 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TODO</title>
+    <title>NOTE</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="app-bar">TODO</div>
-    <!-- <div class="overlay hide"></div> -->
-
+    <div class="app-bar">NOTE KEEPER</div>
+    <div class="overlay hide"></div>
     <div style="height: 10%"></div>
-    <iframe frameborder="0" width="100%" height="100%" id="show-todo-frame">
-      <div class="show-todo-container"></div>
-    </iframe>
+    <div class="container"></div>
 
     <div class="add-note-button">
       <img src="images/add.png" alt="add Note" />
     </div>
 
     <div class="add-todo-form hide">
-      <h2>Add TODO</h2>
+      <h2>Add NOTE</h2>
       <input
         type="text"
         class="todo-title form-controller"
@@ -37,15 +34,51 @@
       ></textarea>
       <div class="add-todo-form-button">ADD</div>
 
-      <div class="add-todo-close-button">
-        <img src="images/close.png" alt="" srcset="" />
+        <img src="images/close.png" alt="" srcset="" class="add-todo-close-button"/>
       </div>
+    </div>
+
+    <div class="update-todo-form hide">
+      <h2>Update Note</h2>
+      <input type="text" class="update-note-title" placeholder="Title" />
+      <textarea
+        class="update-note-description"
+        name="description"
+        id=""
+        cols="30"
+        rows="10"
+        placeholder="write description"
+        draggable="disable"
+      ></textarea>
+      <div class="update-todo-form-button">Update</div>
+
+      <img src="images/close.png" alt="" srcset="" class="update-note-close-button"/>
+
     </div>
 
     <div class="custom-toast">
       <img src="images/info.png" alt="" srcset="" />
 
       <p>This is Custom Tost</p>
+    </div>
+    <div class="delete-confirmation-dialog hide">
+      <h2>Confirmation</h2>
+      <p>Are you sure to delete</p>
+      <div class="confirmation-buttons">
+        <div class="conform-button yes">Yes</div>
+        <div class="conform-button no">No</div>
+      </div>
+    </div>
+
+    <div class="view-note-container hide">
+      <h2>Title here</h2>
+      <hr>
+      <p>Description here</p>
+
+
+      <img src="images/close.png" alt="" srcset="" class="view-note-close-button"/>
+
+
     </div>
     <script src="script.js"></script>
   </body>
